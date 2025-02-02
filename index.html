@@ -9,17 +9,23 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="game-container">
-            <h1 class="title">Korean Word Memorizer</h1>
-            <div class="word-box">
-                <span id="korean-word"></span>
-            </div>
-            <input type="text" id="user-input" placeholder="Type the translation..." autofocus>
-            <button id="check-btn" class="action-btn">Check</button>
-            <p id="result" class="result-text"></p>
-            <p id="score" class="score-text">Correct Answers: 0</p>
+    <div class="container">
+        <header>
+            <h1>Korean Word Memorizer</h1>
+            <button id="toggle-theme">🌙</button> <!-- Light/Dark mode switcher -->
+        </header>
+        <div id="word-container">
+            <span id="korean-word"></span>
         </div>
+        <input type="text" id="user-input" placeholder="Type the translation..." autofocus>
+        <button id="check-btn">Check</button>
+        <p id="result"></p>
+        <p id="score">Correct Answers: 0</p>
+        
+        <div class="progress-container">
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>
