@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean word memorization</title>
+    <title>Korean Word Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Korean Word Memorizer</h1>
-        <div id="word-container">
-            <span id="korean-word"></span>
+    <div class="wrapper">
+        <div class="game-container">
+            <h1 class="title">Korean Word Memorizer</h1>
+            <div class="word-box">
+                <span id="korean-word"></span>
+            </div>
+            <input type="text" id="user-input" placeholder="Type the translation..." autofocus>
+            <button id="check-btn" class="action-btn">Check</button>
+            <p id="result" class="result-text"></p>
+            <p id="score" class="score-text">Correct Answers: 0</p>
         </div>
-        <input type="text" id="user-input" placeholder="Type the translation...">
-        <button id="check-btn">Check</button>
-        <p id="result"></p>
-        <p id="score">Correct Answers: 0</p>
-
     </div>
     <script src="script.js"></script>
 </body>
