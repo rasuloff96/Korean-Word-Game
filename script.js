@@ -25,7 +25,6 @@ const words = [
 let currentWordIndex = 0;
 let score = 0;
 
-// Set initial word
 function setNewWord() {
     const wordObj = words[currentWordIndex];
     document.getElementById('korean-word').textContent = wordObj.korean;
@@ -34,7 +33,6 @@ function setNewWord() {
     document.getElementById('progress-bar').value = (currentWordIndex / words.length) * 100;
 }
 
-// Check user's answer
 document.getElementById('check-btn').addEventListener('click', function () {
     const userInput = document.getElementById('user-input').value.trim();
     const correctAnswer = words[currentWordIndex].translation;
@@ -55,12 +53,10 @@ document.getElementById('check-btn').addEventListener('click', function () {
     }
 });
 
-// Toggle light/dark mode
 document.getElementById('toggle-theme').addEventListener('click', function () {
     document.body.classList.toggle('dark');
     document.querySelector('.container').classList.toggle('dark');
     document.querySelector('button').classList.toggle('dark');
 });
 
-// Initialize game
 setNewWord();
