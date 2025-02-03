@@ -7,9 +7,11 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333; /* Light mode matn rangi */
 }
 
+/* Container */
 .container {
     background-color: #ffffff;
     border-radius: 12px;
@@ -23,6 +25,7 @@ body {
     justify-content: center;
 }
 
+/* Header */
 header {
     width: 100%;
     display: flex;
@@ -39,6 +42,7 @@ h1 {
     text-align: center;
 }
 
+/* Buttons */
 button {
     background-color: #6200ea;
     color: white;
@@ -54,6 +58,7 @@ button:hover {
     background-color: #3700b3;
 }
 
+/* Word display */
 #word-container {
     font-size: 30px;
     font-weight: bold;
@@ -61,6 +66,7 @@ button:hover {
     margin-bottom: 25px;
 }
 
+/* Input field */
 input {
     padding: 12px;
     width: 100%;
@@ -69,6 +75,8 @@ input {
     margin-bottom: 15px;
     font-size: 16px;
     transition: all 0.3s ease;
+    color: #333;
+    background-color: #fff;
 }
 
 input:focus {
@@ -76,6 +84,7 @@ input:focus {
     outline: none;
 }
 
+/* Check button */
 button#check-btn {
     padding: 12px 30px;
     background-color: #4caf50;
@@ -91,6 +100,7 @@ button#check-btn:hover {
     background-color: #45a049;
 }
 
+/* Results & Score */
 #result {
     margin-top: 20px;
     font-size: 18px;
@@ -104,7 +114,7 @@ button#check-btn:hover {
     color: #555;
 }
 
-/* Progress bar styles */
+/* Progress bar */
 .progress-container {
     width: 100%;
     margin-top: 25px;
@@ -130,17 +140,18 @@ progress::-webkit-progress-value {
     border-radius: 10px;
 }
 
-/* Dark Mode */
+/* 🌙 Dark Mode */
 body.dark {
     background-color: #121212;
+    color: white;
 }
 
 .container.dark {
     background-color: #1e1e1e;
 }
 
-h1, #word-container, #result, #score {
-    color: #fff;
+h1.dark, #word-container.dark, #result.dark, #score.dark {
+    color: white;
 }
 
 button.dark {
@@ -153,7 +164,7 @@ button.dark:hover {
 
 input.dark {
     border: 1px solid #bb86fc;
-    color: #fff;
+    color: white;
     background-color: #333;
 }
 
@@ -165,7 +176,7 @@ button#check-btn.dark:hover {
     background-color: #018786;
 }
 
-/* Responsive design for small screens */
+/* Responsive design */
 @media (max-width: 600px) {
     .container {
         padding: 20px;
