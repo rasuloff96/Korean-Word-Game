@@ -22,6 +22,25 @@ const words = [
     { korean: '해결', translation: 'Solution' },
 ];
 
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputField = document.getElementById("user-input");
+    const checkButton = document.getElementById("check-btn");
+
+    inputField.focus();
+
+    inputField.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+            checkButton.click();
+        }
+    });
+});
+
+
+
+
 let currentWordIndex = 0;
 let score = 0;
 
