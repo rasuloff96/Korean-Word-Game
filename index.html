@@ -1,21 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koreys So‘z O‘yini</title>
     <link rel="stylesheet" href="style.css">
-    <title>Korean Word Game</title>
 </head>
+
 <body>
     <div class="container">
-        <h2>Korean Word Quiz</h2>
-        <p id="word">Loading...</p>
-        <div id="options"></div>
-        <p id="timer">Time: <span id="timeLeft">10</span>s</p>
-        <p id="score">Score: 0</p>
-        <button id="nextBtn" class="hidden">Next</button>
+        <h1>Koreys So‘z O‘yini</h1>
+        <button id="darkModeToggle">🌙 Dark Mode</button>
+        <button id="startBtn">Start</button>
+
+        <div id="quizArea">
+            <h2 id="wordDisplay">Boshlash uchun "Start" ni ezing.</h2>
+            <input type="text" id="answerInput" placeholder="Javobni kiriting" autofocus >
+            <div class="quiz_buttons">
+                <button id="checkBtn">Tekshirish</button>
+                <button id="nextBtn">Keyingi</button>
+            </div>
+            <p id="feedback"></p>
+            <p id="timer">⏳ 10</p>
+        </div>
+
+
+        <div id="stats">
+            <h3>Statistika</h3>
+            <p><b>To‘g‘ri javoblar:</b> <span id="correctCount">0</span></p>
+            <p><b>Noto‘g‘ri javoblar:</b> <span id="wrongCount">0</span></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
