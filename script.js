@@ -1,64 +1,59 @@
-let words = [];
-let currentWordIndex = 0;
-let correctCount = 0;
-let incorrectCount = 0;
+const words = [
+    { korean: "사과", english: "Apple" },
+    { korean: "물", english: "Water" },
+    { korean: "책", english: "Book" },
+    { korean: "하늘", english: "Sky" }
+];
+let score = 0;
+let timeLeft = 10;
+let timer;
 
-async function loadWords() {
-    try {
-        const response = await fetch("words.json");
-        words = await response.json();
-        setNewWord();
-    } catch (error) {
-        console.error("Error loading words:", error);
-    }
+function startGame() {
+    loadQuestion();
+    startTimer();
 }
 
-function setNewWord() {
-    if (words.length === 0 || currentWordIndex >= words.length) {
-        document.getElementById("result").textContent = "🎉 Game Over!";
-        return;
-    }
+function loadQuestion() {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    const wordObj = words[randomIndex];
+    document.getElementById("word").textContent = wordObj.korean;
+    document.getElementById("options").innerHTML = "";
+    const options = [...words].sort(() => Math.random() - 0.5);
     
-    const wordObj = words[currentWordIndex];
-    document.getElementById("korean-word").textContent = wordObj.korean;
-    document.getElementById("user-input").value = "";
-    document.getElementById("result").textContent = "";
-    document.getElementById("progress-bar").value = (currentWordIndex / words.length) * 100;
+    options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option.english;
+        btn.onclick = () => checkAnswer(option.english === wordObj.english);
+        document.getElementById("options").appendChild(btn);
+    });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const inputField = document.getElementById("user-input");
-    const checkButton = document.getElementById("check-btn");
-
-    inputField.focus();
-    inputField.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            checkButton.click();
-        }
-    });
-});
-
-document.getElementById("check-btn").addEventListener("click", function () {
-    const userInput = document.getElementById("user-input").value.trim();
-    const correctAnswer = words[currentWordIndex].english;
-
-    if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
-        correctCount++;
-        document.getElementById("result").textContent = "✅ Correct!";
-        document.getElementById("correct-count").textContent = correctCount;
-    } else {
-        incorrectCount++;
-        document.getElementById("result").textContent = `❌ Incorrect! Correct answer: ${correctAnswer}`;
-        document.getElementById("incorrect-count").textContent = incorrectCount;
+function checkAnswer(isCorrect) {
+    if (isCorrect) {
+        score++;
+        document.getElementById("score").textContent = "Score: " + score;
     }
+    clearInterval(timer);
+    document.getElementById("nextBtn").classList.remove("hidden");
+}
 
-    currentWordIndex++;
-    setNewWord();
+function startTimer() {
+    timeLeft = 10;
+    document.getElementById("timeLeft").textContent = timeLeft;
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timeLeft").textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            document.getElementById("nextBtn").classList.remove("hidden");
+        }
+    }, 1000);
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+    document.getElementById("nextBtn").classList.add("hidden");
+    loadQuestion();
+    startTimer();
 });
 
-document.getElementById("toggle-theme").addEventListener("click", function () {
-    document.body.classList.toggle("dark");
-});
-
-loadWords();
+startGame();
