@@ -1,153 +1,110 @@
-const words = [
-    { korean: "사과", english: "Apple" },
-    { korean: "물", english: "Water" },
-    { korean: "책", english: "Book" },
-    { korean: "하늘", english: "Sky" }
+let words = [
+    {"korean": "안녕하세요", "uzbek": "Salom"},
+    {"korean": "사랑", "uzbek": "Sevgi"},
+    {"korean": "학교", "uzbek": "Maktab"},
+    {"korean": "고양이", "uzbek": "Mushuk"},
+    {"korean": "강아지", "uzbek": "Kuchuk"},
+    {"korean": "책", "uzbek": "Kitob"},
+    {"korean": "컴퓨터", "uzbek": "Kompyuter"},
+    {"korean": "전화", "uzbek": "Telefon"},
+    {"korean": "음식", "uzbek": "Oziq-ovqat"},
+    {"korean": "친구", "uzbek": "Do'st"}
 ];
 
-let score = 0;
-let incorrectWords = []; // Notog‘ri topilgan so‘zlar
-let timeLeft = 10;
+let currentWords = [];
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
 let timer;
-let currentWord;
+let timeLeft = 10;
 
-// HTML elementlari
-const wordElement = document.getElementById("word");
-const optionsContainer = document.getElementById("options");
-const timeLeftElement = document.getElementById("timeLeft");
-const scoreElement = document.getElementById("score");
-const nextButton = document.getElementById("nextBtn");
-const body = document.body;
+document.getElementById("startBtn").addEventListener("click", startQuiz);
+document.getElementById("checkBtn").addEventListener("click", checkAnswer);
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+document.getElementById("darkModeToggle").addEventListener("click", toggleDarkMode);
 
-// Dark mode funksiyasi
-const toggleDarkMode = () => {
-    body.classList.toggle("dark-mode");
-};
+function startQuiz() {
+    currentWords = getRandomWords();
+    currentIndex = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    updateStats();
+    showWord();
+}
 
-// Dark mode tugmasini yaratish
-const darkModeButton = document.createElement("button");
-darkModeButton.textContent = "Dark Mode";
-darkModeButton.style.position = "absolute";
-darkModeButton.style.top = "20px";
-darkModeButton.style.right = "20px";
-darkModeButton.style.padding = "8px 12px";
-darkModeButton.style.border = "none";
-darkModeButton.style.borderRadius = "8px";
-darkModeButton.style.cursor = "pointer";
-darkModeButton.style.backgroundColor = "#333";
-darkModeButton.style.color = "white";
-darkModeButton.onclick = toggleDarkMode;
-document.body.appendChild(darkModeButton);
+function getRandomWords() {
+    return words.sort(() => 0.5 - Math.random()).slice(0, 10);
+}
 
-// Dark mode CSS qo‘shish
-const darkModeCSS = document.createElement("style");
-darkModeCSS.innerHTML = `
-    .dark-mode {
-        background-color: #222;
-        color: white;
-    }
-    .dark-mode .container {
-        background: #333;
-        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-    }
-    .dark-mode button {
-        background: #555;
-        color: white;
-    }
-    .dark-mode button:hover {
-        background: #777;
-    }
-`;
-document.head.appendChild(darkModeCSS);
-
-// O‘yinni boshlash
-function startGame() {
-    loadQuestion();
+function showWord() {
+    clearInterval(timer);
+    timeLeft = 10;
+    document.getElementById("wordDisplay").textContent = currentWords[currentIndex].korean;
+    document.getElementById("answerInput").value = "";
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("nextBtn").style.display = "none";
     startTimer();
 }
 
-// Savolni yuklash
-function loadQuestion() {
-    currentWord = words[Math.floor(Math.random() * words.length)];
-    wordElement.textContent = currentWord.korean;
-    optionsContainer.innerHTML = "";
-
-    const options = [...words].sort(() => Math.random() - 0.5);
-
-    options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.textContent = option.english;
-        btn.onclick = () => checkAnswer(btn, option.english === currentWord.english);
-        optionsContainer.appendChild(btn);
-    });
-}
-
-// Javobni tekshirish
-function checkAnswer(button, isCorrect) {
-    clearInterval(timer);
-    
-    if (isCorrect) {
-        button.style.backgroundColor = "green"; // Yashil rang
-        score++;
-    } else {
-        button.style.backgroundColor = "red"; // Qizil rang
-        incorrectWords.push(currentWord); // Notog‘ri topilgan so‘zlarni statistikaga qo‘shish
-    }
-    
-    scoreElement.textContent = "Score: " + score;
-    setTimeout(nextQuestion, 1000); // 1 soniyadan keyin yangi so‘z
-}
-
-// Taymerni boshlash
 function startTimer() {
-    timeLeft = 10;
-    timeLeftElement.textContent = timeLeft;
+    document.getElementById("timer").textContent = `⏳ ${timeLeft}`;
     timer = setInterval(() => {
         timeLeft--;
-        timeLeftElement.textContent = timeLeft;
+        document.getElementById("timer").textContent = `⏳ ${timeLeft}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            incorrectWords.push(currentWord); // Agar vaqt tugasa, noto‘g‘ri topilganlar ro‘yxatiga qo‘shiladi
-            nextQuestion();
+            markWrong();
         }
     }, 1000);
 }
 
-// Enter tugmasi bosilganda tekshirish
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        nextQuestion();
+function checkAnswer() {
+    let userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
+    let correctAnswer = currentWords[currentIndex].uzbek.toLowerCase();
+
+    if (userAnswer === correctAnswer) {
+        markCorrect();
+    } else {
+        markWrong();
     }
-});
+}
 
-// Keyingi savolni yuklash
+function markCorrect() {
+    document.getElementById("feedback").textContent = "✅ To‘g‘ri!";
+    document.getElementById("checkBtn").classList.add("correct");
+    correctCount++;
+    updateStats();
+    nextStep();
+}
+
+function markWrong() {
+    document.getElementById("feedback").textContent = `❌ Noto‘g‘ri! To‘g‘ri javob: ${currentWords[currentIndex].uzbek}`;
+    document.getElementById("checkBtn").classList.add("wrong");
+    wrongCount++;
+    updateStats();
+    nextStep();
+}
+
+function nextStep() {
+    clearInterval(timer);
+    document.getElementById("nextBtn").style.display = "block";
+}
+
 function nextQuestion() {
-    loadQuestion();
-    startTimer();
+    document.getElementById("checkBtn").classList.remove("correct", "wrong");
+    currentIndex++;
+    if (currentIndex < currentWords.length) {
+        showWord();
+    } else {
+        document.getElementById("wordDisplay").textContent = "O‘yin tugadi!";
+    }
 }
 
-// Statistikani ko‘rsatish
-function showStatistics() {
-    let message = "❌ Notog‘ri topilgan so‘zlar:\n";
-    incorrectWords.forEach(word => {
-        message += `${word.korean} - ${word.english}\n`;
-    });
-    alert(message || "Hammasi to‘g‘ri topildi! ✅");
+function updateStats() {
+    document.getElementById("correctCount").textContent = correctCount;
+    document.getElementById("wrongCount").textContent = wrongCount;
 }
 
-// Statistika tugmasi yaratish
-const statsButton = document.createElement("button");
-statsButton.textContent = "Statistika";
-statsButton.style.position = "absolute";
-statsButton.style.bottom = "20px";
-statsButton.style.right = "20px";
-statsButton.style.padding = "8px 12px";
-statsButton.style.border = "none";
-statsButton.style.borderRadius = "8px";
-statsButton.style.cursor = "pointer";
-statsButton.style.backgroundColor = "#007bff";
-statsButton.style.color = "white";
-statsButton.onclick = showStatistics;
-document.body.appendChild(statsButton);
-
-startGame();
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
