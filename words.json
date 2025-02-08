@@ -1,86 +1,198 @@
 [
     {
-        "korean": "안녕하세요",
-        "translation": "Salom"
+        "korean": "사과",
+        "uzbek": "Olma"
     },
     {
-        "korean": "사랑",
-        "translation": "Sevgi"
-    },
-    {
-        "korean": "학교",
-        "translation": "Maktab"
+        "korean": "물",
+        "uzbek": "Suv"
     },
     {
         "korean": "책",
-        "translation": "Kitob"
-    },
-    {
-        "korean": "컴퓨터",
-        "translation": "Kompyuter"
-    },
-    {
-        "korean": "음악",
-        "translation": "Musiqa"
-    },
-    {
-        "korean": "강아지",
-        "translation": "It"
-    },
-    {
-        "korean": "고양이",
-        "translation": "Mushuk"
-    },
-    {
-        "korean": "영화",
-        "translation": "Film"
-    },
-    {
-        "korean": "음식",
-        "translation": "Ovqat"
-    },
-    {
-        "korean": "행복",
-        "translation": "Baxt"
-    },
-    {
-        "korean": "친구",
-        "translation": "Do'st"
-    },
-    {
-        "korean": "여행",
-        "translation": "Sayohat"
-    },
-    {
-        "korean": "시간",
-        "translation": "Vaqt"
-    },
-    {
-        "korean": "사람",
-        "translation": "Inson"
-    },
-    {
-        "korean": "여자",
-        "translation": "Ayol"
-    },
-    {
-        "korean": "남자",
-        "translation": "Erkak"
-    },
-    {
-        "korean": "날씨",
-        "translation": "Havo"
+        "uzbek": "Kitob"
     },
     {
         "korean": "하늘",
-        "translation": "Osmon"
+        "uzbek": "Osmon"
+    },
+    {
+        "korean": "달",
+        "uzbek": "Oy"
+    },
+    {
+        "korean": "태양",
+        "uzbek": "Quyosh"
+    },
+    {
+        "korean": "별",
+        "uzbek": "Yulduz"
+    },
+    {
+        "korean": "시간",
+        "uzbek": "Vaqt"
+    },
+    {
+        "korean": "학교",
+        "uzbek": "Maktab"
+    },
+    {
+        "korean": "선생님",
+        "uzbek": "O'qituvchi"
+    },
+    {
+        "korean": "학생",
+        "uzbek": "O'quvchi"
+    },
+    {
+        "korean": "공원",
+        "uzbek": "Bog'"
+    },
+    {
+        "korean": "나무",
+        "uzbek": "Daraxt"
+    },
+    {
+        "korean": "꽃",
+        "uzbek": "Gul"
+    },
+    {
+        "korean": "강",
+        "uzbek": "Daryo"
+    },
+    {
+        "korean": "바다",
+        "uzbek": "Dengiz"
+    },
+    {
+        "korean": "산",
+        "uzbek": "Tog'"
+    },
+    {
+        "korean": "비",
+        "uzbek": "Yomg'ir"
     },
     {
         "korean": "눈",
-        "translation": "Ko'z"
+        "uzbek": "Qor"
     },
     {
-        "korean": "남자 친구",
-        "translation": "Og'il bola do'st"
+        "korean": "바람",
+        "uzbek": "Shamol"
+    },
+    {
+        "korean": "집",
+        "uzbek": "Uy"
+    },
+    {
+        "korean": "문",
+        "uzbek": "Eshik"
+    },
+    {
+        "korean": "창문",
+        "uzbek": "Deraza"
+    },
+    {
+        "korean": "침대",
+        "uzbek": "Krovat"
+    },
+    {
+        "korean": "의자",
+        "uzbek": "Stul"
+    },
+    {
+        "korean": "책상",
+        "uzbek": "Stol"
+    },
+    {
+        "korean": "전화",
+        "uzbek": "Telefon"
+    },
+    {
+        "korean": "컴퓨터",
+        "uzbek": "Kompyuter"
+    },
+    {
+        "korean": "자동차",
+        "uzbek": "Moshina"
+    },
+    {
+        "korean": "비행기",
+        "uzbek": "Samolyot"
+    },
+    {
+        "korean": "기차",
+        "uzbek": "Poyezd"
+    },
+    {
+        "korean": "버스",
+        "uzbek": "Avtobus"
+    },
+    {
+        "korean": "사람",
+        "uzbek": "Odam"
+    },
+    {
+        "korean": "친구",
+        "uzbek": "Do'st"
+    },
+    {
+        "korean": "가족",
+        "uzbek": "Oila"
+    },
+    {
+        "korean": "아버지",
+        "uzbek": "Ota"
+    },
+    {
+        "korean": "어머니",
+        "uzbek": "Ona"
+    },
+    {
+        "korean": "형",
+        "uzbek": "Aka"
+    },
+    {
+        "korean": "누나",
+        "uzbek": "Opa"
+    },
+    {
+        "korean": "동생",
+        "uzbek": "Uka/Singil"
+    },
+    {
+        "korean": "아기",
+        "uzbek": "Bola"
+    },
+    {
+        "korean": "음식",
+        "uzbek": "Oziq-ovqat"
+    },
+    {
+        "korean": "밥",
+        "uzbek": "Guruch"
+    },
+    {
+        "korean": "고기",
+        "uzbek": "Go'sht"
+    },
+    {
+        "korean": "생선",
+        "uzbek": "Baliq"
+    },
+    {
+        "korean": "야채",
+        "uzbek": "Sabzavot"
+    },
+    {
+        "korean": "과일",
+        "uzbek": "Meva"
+    },
+    {
+        "korean": "달걀",
+        "uzbek": "Tuxum"
+    },
+    {
+        "korean": "우유",
+        "uzbek": "Sut"
     }
 ]
