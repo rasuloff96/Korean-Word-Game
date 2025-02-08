@@ -1,87 +1,133 @@
+/* Global styles */
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #ffffff;
-    --background-color: #f0f2f5;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    --light-bg: #f5f5f5;
+    --light-text: #333;
+    --dark-bg: #121212;
+    --dark-text: #ffffff;
+    --primary-light: #007bff;
+    --primary-dark: #0056b3;
+    --start-btn: #4a90e2;
+    --start-hover: #357ABD;
+    --error: #e74c3c;
+    --success: #2ecc71;
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-bg);
+    color: var(--light-text);
+    transition: background 0.3s, color 0.3s;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-    background: var(--background-color);
 }
 
+/* Dark mode */
+.dark-mode {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* Container */
 .container {
-    width: 90%;
-    max-width: 400px;
-    background: var(--secondary-color);
+    width: 400px;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-h2 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
+.dark-mode .container {
+    background: rgba(0, 0, 0, 0.7);
 }
 
-#word {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-#options button {
-    display: block;
-    width: 100%;
+/* Input field */
+input {
+    width: 90%;
     padding: 12px;
-    margin: 8px 0;
-    border: none;
     border-radius: 8px;
-    background: var(--primary-color);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#options button:hover {
-    background: darkgreen;
-}
-
-#timer, #score {
+    border: 2px solid #ddd;
+    outline: none;
     font-size: 16px;
     margin-top: 10px;
 }
 
-#nextBtn {
-    display: none;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #333;
+.dark-mode input {
+    background: #222;
+    border: 2px solid #555;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-top: 15px;
 }
 
-#nextBtn:hover {
-    background: #555;
+button {
+    flex: 1;
+    margin: 5px;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.hidden {
-    display: none;
+#quizArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Start button (yangi rang) */
+#startBtn {
+    background: var(--start-btn);
+}
+
+#startBtn:hover {
+    background: var(--start-hover);
+}
+
+/* Check and Next Buttons */
+#checkBtn {
+    background: var(--success);
+}
+
+#checkBtn:hover {
+    background: #27ae60;
+}
+
+#nextBtn {
+    background: var(--primary-light);
+}
+
+#nextBtn:hover {
+    background: var(--primary-dark);
+}
+
+/* Dark mode button */
+#darkModeToggle {
+    background: var(--primary-dark);
+}
+
+#darkModeToggle:hover {
+    background: var(--primary-light);
+}
+
+.dark-mode #darkModeToggle {
+    background: var(--primary-light);
 }
