@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean Word Game</title>
     <link rel="stylesheet" href="style.css">
+    <title>Korean Word Game</title>
 </head>
 <body>
     <div class="container">
-        <h1>Korean Word Memorizer</h1>
-        <button id="toggle-theme">🌙</button>
-        <div id="word-container">
-            <span id="korean-word"></span>
-        </div>
-        <input type="text" id="user-input" placeholder="Type the translation...">
-        <button id="check-btn">Check</button>
-        <p id="result"></p>
-        <p id="score">Correct Answers: 0</p>
-        <progress id="progress-bar" value="0" max="100"></progress>
+        <h2>Korean Word Quiz</h2>
+        <p id="word">Loading...</p>
+        <div id="options"></div>
+        <p id="timer">Time: <span id="timeLeft">10</span>s</p>
+        <p id="score">Score: 0</p>
+        <button id="nextBtn" class="hidden">Next</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
