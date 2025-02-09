@@ -23,7 +23,6 @@ document.getElementById("checkBtn").addEventListener("click", checkAnswer);
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 document.getElementById("darkModeToggle").addEventListener("click", toggleDarkMode);
 
-// Dark mode holatini yuklash
 if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
 }
@@ -111,7 +110,6 @@ function updateStats() {
     document.getElementById("wrongCount").textContent = wrongCount;
 }
 
-// Natijalarni localStorage-ga saqlash
 function saveResults() {
     let results = JSON.parse(localStorage.getItem("quizResults")) || [];
     let newResult = {
@@ -120,11 +118,10 @@ function saveResults() {
         wrong: wrongCount
     };
     results.push(newResult);
-    if (results.length > 10) results.shift(); // Oxirgi 10 ta natijani saqlash
+    if (results.length > 10) results.shift(); 
     localStorage.setItem("quizResults", JSON.stringify(results));
 }
 
-// Dark mode-ni localStorage-ga saqlash
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
     if (document.body.classList.contains("dark-mode")) {
